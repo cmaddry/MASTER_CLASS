@@ -10,6 +10,8 @@ output: html_document
 There are two repositories filled with all kinds of good "software" for R. Or packages.
 There are lots of powerful packages we will be using.
 
+quick change 
+
 # CRAN
 The comprehensive R archive network (CRAN) is located here:
 https://cran.r-project.org/
