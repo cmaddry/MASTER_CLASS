@@ -23,7 +23,7 @@ So all we need for DESEQ2 is input counts and colData. We already got our counts
 load("results/count_files.RData", verbose = T)
 
 #IMPORTANT Raw counts file
-counts_matrix <- read.table("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/04_RNAseq_Dox/01_Mouse_dox_wt/good_class_RNAseq/pipeline_output/star_salmon/salmon.merged.gene_counts.tsv", header=TRUE, row.names=1)
+counts_matrix <- read.table("//scratch/Shares/rinnclass/MASTER_CLASS/STUDENTS/calebIsSoCool/MASTER_CLASS/data/salmon.merged.gene_counts.tsv", header=TRUE, row.names=1)
 
 # Remove gene name column
 counts_matrix <-counts_matrix %>% 
@@ -110,6 +110,8 @@ It's actually required for DESEQ to do analysis only on data that has been facto
 We want to analyze time and replicates (OR MAYBE JUST TIME).
 
 So let's make time point a factored column in deseq_samples
+
+
 
 # 3) Factoring columns
 ```{R facotring timepoint and replicate column}
