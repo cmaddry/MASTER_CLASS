@@ -227,6 +227,8 @@ install.packages("matrixStats")
 library(matrixStats)
 
 
+
+
 # Let's establish our time points and replicates there in:
 # First establish time point and replicate cols
 time_points <- c("0", "12", "24", "48", "96")
