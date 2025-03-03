@@ -108,6 +108,8 @@ We made a g2s and this is where it comes in handy !
 ```{r merge in gene_name}
 # we need to merge g2s and res_0_df with a column that exists in both DFs = gene_id
 
+nrow(g2s)
+
 res_0_df <- merge(res_0_df, g2s, by = c("gene_id" = "gene_id"))
 view(res_0_df)
 # Or we could use left join or join 
