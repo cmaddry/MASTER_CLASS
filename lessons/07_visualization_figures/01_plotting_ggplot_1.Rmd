@@ -49,10 +49,10 @@ Layer 1 : DATA (data types matter so good to label object accrodingly)
 ```{r loading our RNAseq analysis data TPM & COUNTS}
 
 # load TPM RESULTS: 
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/TPM_results/TPM_results.Rdata")
+load("../06_Differential_expression_analyses/results/TPM_results/TPM_results.Rdata")
 
 # laod DESEQ2 results
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/counts_results_DESEQ/DESEQ_results.rdata")
+load("../06_Differential_expression_analyses/results/counts_results_DESEQ/DESEQ_results.rdata")
 
 ```
 
@@ -90,7 +90,7 @@ Now let's change the shape of the points outside the aes() layer and in the geom
 ```{R changing shapes in plot}
              
 ggplot(filtered_res_df, aes(x = log2FoldChange, y = padj)) +
-  geom_point(shape = 'square', color = 'purple') +
+  geom_point(shape = 18, color = '#400080') +
   xlim(-5, 5) 
   
 # Here are some good resources for other shapes and color vignettes:
@@ -109,7 +109,7 @@ ggplot(filtered_res_df,
        aes(x = log2FoldChange, y = padj, color = result_name)) +
   geom_point()
 
-# Nice now we can see that we mapped our data in the aes() layer to be by timepoint of sigifcance.
+# Nice now we can see that we mapped our data in the aes() layer to be by timepoint of significance.
 # Let's just color the earliest time points going deeper into the mapping layer aes() layer
 
 ggplot(filtered_res_df, aes(x = log2FoldChange, 
