@@ -5,6 +5,8 @@ date: "2024-08-04"
 output: html_document
 editor_options: 
   chunk_output_type: console
+  markdown: 
+    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
@@ -16,35 +18,36 @@ library(tibble)
 library(dplyr)
 
 ```
+
 # Load data
+
 ```{r loading our RNAseq analysis data TPM & COUNTS}
 # load TPM RESULTS: 
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/TPM_results/TPM_results.Rdata")
+load("../06_Differential_expression_analyses/results/TPM_results/TPM_results.Rdata")
 
 # laod DESEQ2 results
-load("/scratch/Shares/rinnclass/MASTER_CLASS/lessons/06_Differential_expression_analyses/results/counts_results_DESEQ/DESEQ_results.rdata")
+load("../06_Differential_expression_analyses/results/counts_results_DESEQ/DESEQ_results.rdata")
 ```
 
 # Summary of where we are at
-Now we have gone through these layers:
-1) Data -- data being plotted from object indexes etc.
-2) MAPPING -- mapping data (aes)
-3) Statistics -- statistical analyses on mapped data
-4) Scales
-5) Geom
-# Now we are ready for the last three layers: FACETS, COORDINATE and THEME
-6) Facet
-7) Coordinate
-8) Theme
+
+Now we have gone through these layers: 1) Data -- data being plotted
+from object indexes etc. 2) MAPPING -- mapping data (aes) 3) Statistics
+-- statistical analyses on mapped data 4) Scales 5) Geom \# Now we are
+ready for the last three layers: FACETS, COORDINATE and THEME 6) Facet
+7) Coordinate 8) Theme
 
 # FACETS
-This will allow us to make multiple plots in the same plot frame or facet
-One limitation is that it can only make the same plots from different data
 
-Be careful in the facet layer that you don't make too many plots. 
+This will allow us to make multiple plots in the same plot frame or
+facet One limitation is that it can only make the same plots from
+different data
+
+Be careful in the facet layer that you don't make too many plots.
 Essentially we make as many figures as there are entries.
 
 # FACET_GRID & FACET_WRAP
+
 ```{r facet_grid(), facet_wrap()}
 
 # Now let's pick a few genes of interest to plot.
@@ -67,7 +70,9 @@ ggplot(gene_values,
 # facet wrap allows rows and columns in 
 
 ```
+
 # Note that Firre was not in the list so wasn't plotted - but everything worked !
+
 We can also facet grid another parameter -- let's say time_point
 
 ```{R two facets}
@@ -95,6 +100,7 @@ ggplot(gene_values,
 ```
 
 # DEEPER INTO FACET: we can add some parameters to order the plots
+
 ```{R deeper into facets}
 
 # We can set the rows and cols in facet wrap
@@ -113,13 +119,15 @@ ggplot(gene_values,
 ```
 
 # Coordinate layer
+
 How to represent X and Y coordinates in different coordinate systems.
-This is unlikely to really be used in biological data but an important layer!
-We have been using Cartesian and it is the most common "coordinate" system.
-But you can also plot data in "polar" and other coordinate systems.
-We can just add it in the "Coordinates layer"
+This is unlikely to really be used in biological data but an important
+layer! We have been using Cartesian and it is the most common
+"coordinate" system. But you can also plot data in "polar" and other
+coordinate systems. We can just add it in the "Coordinates layer"
 
 # To complete this layer let's just take a peak at "polar" coordinate space
+
 ```{r coordinate layer}
 
 # let's make the coordinates polar instead of cartesian
@@ -141,15 +149,18 @@ ggplot(filtered_res_df) +
 ```
 
 # Theme layer
+
 This is a great way to package all the features you want, colors,
-backgrounds, grid lines etc. We tend to use paper white as a defualt theme.
+backgrounds, grid lines etc. We tend to use paper white as a defualt
+theme.
 
 We made a defualt theme that we can source at the begining of the
-document call _setup.R. Once loaded a "paper white" theme will be available.
+document call \_setup.R. Once loaded a "paper white" theme will be
+available.
 
-Here is an example of a 'theme' is called in ggPlot
-# There are lots of themes you can find them here:
-https://ggplot2.tidyverse.org/reference/ggtheme.html
+Here is an example of a 'theme' is called in ggPlot \# There are lots of
+themes you can find them here:
+<https://ggplot2.tidyverse.org/reference/ggtheme.html>
 
 ```{r themes titles}
 
@@ -171,6 +182,7 @@ ggplot(filtered_res_df, aes(x = log2FoldChange)) +
 ```
 
 # Let's make one more full plot with padj vs pvalue
+
 ```{r plotting values for linear regression on plot}
 library(broom)
 
@@ -204,15 +216,18 @@ ggplot(filtered_res_df, aes(pvalue, padj)) +
 ```
 
 # Custom themes
-You can see that a theme is just a bunch of pre-bundled code!
-https://ggplot2.tidyverse.org/reference/ggtheme.html
 
-So when you arrive at your favorites you can save a lot of time 
-by simplying sourcing a theme. Here is my favorite :) !
+You can see that a theme is just a bunch of pre-bundled code!
+<https://ggplot2.tidyverse.org/reference/ggtheme.html>
+
+So when you arrive at your favorites you can save a lot of time by
+simplying sourcing a theme. Here is my favorite :) !
 
 # Let's load and use a custom theme - paper white
-Check out the file in "util/plot_theme.R"
-It's an rscript that we source and then get all the parameters
+
+Check out the file in "util/plot_theme.R" It's an rscript that we source
+and then get all the parameters
+
 ```{r custom theme paperwhite}
 
 source("../../util/plot_theme.R")
@@ -241,6 +256,7 @@ ggplot(filtered_res_df, aes(pvalue, padj)) +
 ```
 
 # Very nice we can now use that them on any plot we have made previously let's check it out
+
 ```{r more theme paper white}
 
 ggplot(gene_values, 
@@ -253,7 +269,3 @@ ggplot(gene_values,
 # We called a color pallete but it wasn't needed :)
 
 ```
-
-
-
-
