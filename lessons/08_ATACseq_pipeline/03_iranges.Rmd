@@ -125,7 +125,7 @@ ir2 <- IRanges(start = c(17,100, 1100), end = c(49, 199, 1201))
 
 # union (Iranges function) 
 # note: forces the union even if not overlapping!
-ov1 <- union(ir1, ir2)
+ov1 <- IRanges::union(ir1, ir2)
 ir1
 ir2
 # example: 1 is "union" with 17 and is 49 long
@@ -142,7 +142,7 @@ Let's use intersect which requires an overlap to make the intersection.
 
 # intersect (min overlap)
 # will only result in overlapping ranges
-ov3 <- intersect(ir1, ir2)
+ov3 <- IRanges::intersect(ir1, ir2)
 
 # let's look
 ov3
